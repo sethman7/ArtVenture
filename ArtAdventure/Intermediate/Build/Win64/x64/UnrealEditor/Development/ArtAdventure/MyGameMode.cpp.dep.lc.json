@@ -1,0 +1,19 @@
+{
+    "Version": "1.2",
+    "Data": {
+        "Source": "c:\\unrealprojects\\artventures\\artadventure\\source\\artadventure\\game\\mygamemode.cpp",
+        "ProvidedModule": "",
+        "PCH": "c:\\unrealprojects\\artventures\\artadventure\\intermediate\\build\\win64\\x64\\artadventureeditor\\development\\engine\\sharedpch.engine.cpp20.inclorderunreal5_0.h.pch",
+        "Includes": [
+            "c:\\unrealprojects\\artventures\\artadventure\\intermediate\\build\\win64\\x64\\unrealeditor\\development\\artadventure\\definitions.artadventure.h",
+            "c:\\unrealprojects\\artventures\\artadventure\\source\\artadventure\\game\\mygamemode.h",
+            "c:\\program files\\epic games\\ue_5.3\\engine\\source\\runtime\\engine\\classes\\gameframework\\gamemodebase.h",
+            "c:\\program files\\epic games\\ue_5.3\\engine\\source\\runtime\\engine\\classes\\engine\\serverstatreplicator.h",
+            "c:\\program files\\epic games\\ue_5.3\\engine\\intermediate\\build\\win64\\unrealeditor\\inc\\engine\\uht\\serverstatreplicator.generated.h",
+            "c:\\program files\\epic games\\ue_5.3\\engine\\intermediate\\build\\win64\\unrealeditor\\inc\\engine\\uht\\gamemodebase.generated.h",
+            "c:\\unrealprojects\\artventures\\artadventure\\intermediate\\build\\win64\\unrealeditor\\inc\\artadventure\\uht\\mygamemode.generated.h"
+        ],
+        "ImportedModules": [],
+        "ImportedHeaderUnits": []
+    }
+}

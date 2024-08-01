@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="17.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <None Include="..\..\ArtAdventure.uproject" />
+    <Filter Include="Source">
+      <UniqueIdentifier>{F31BBDD1-B3E8-3BCC-9652-680E16935819}</UniqueIdentifier>
+    </Filter>
+    <None Include="..\..\Source\ArtAdventure.Target.cs">
+      <Filter>Source</Filter>
+    </None>
+    <None Include="..\..\Source\ArtAdventureEditor.Target.cs">
+      <Filter>Source</Filter>
+    </None>
+    <None Include="..\..\.vsconfig" />
+    <Filter Include="Config">
+      <UniqueIdentifier>{FA535FFB-25E1-3D20-B416-52F9BE21E06E}</UniqueIdentifier>
+    </Filter>
+    <None Include="..\..\Config\DefaultEditor.ini">
+      <Filter>Config</Filter>
+    </None>
+    <None Include="..\..\Config\DefaultEngine.ini">
+      <Filter>Config</Filter>
+    </None>
+    <None Include="..\..\Config\DefaultGame.ini">
+      <Filter>Config</Filter>
+    </None>
+    <None Include="..\..\Config\DefaultInput.ini">
+      <Filter>Config</Filter>
+    </None>
+    <Filter Include="Source\ArtAdventure">
+      <UniqueIdentifier>{958CFCBD-DC8E-3210-8D4C-FCF6606940D4}</UniqueIdentifier>
+    </Filter>
+    <None Include="..\..\Source\ArtAdventure\ArtAdventure.Build.cs">
+      <Filter>Source\ArtAdventure</Filter>
+    </None>
+    <ClCompile Include="..\..\Source\ArtAdventure\ArtAdventure.cpp">
+      <Filter>Source\ArtAdventure</Filter>
+    </ClCompile>
+    <ClInclude Include="..\..\Source\ArtAdventure\ArtAdventure.h">
+      <Filter>Source\ArtAdventure</Filter>
+    </ClInclude>
+    <ClCompile Include="..\..\Source\ArtAdventure\MyPawn.cpp">
+      <Filter>Source\ArtAdventure</Filter>
+    </ClCompile>
+    <ClInclude Include="..\..\Source\ArtAdventure\MyPawn.h">
+      <Filter>Source\ArtAdventure</Filter>
+    </ClInclude>
+    <Filter Include="Source\ArtAdventure\Game">
+      <UniqueIdentifier>{B9DAD78C-CF29-378E-A3C9-0910D6433247}</UniqueIdentifier>
+    </Filter>
+    <ClCompile Include="..\..\Source\ArtAdventure\Game\MyGameMode.cpp">
+      <Filter>Source\ArtAdventure\Game</Filter>
+    </ClCompile>
+    <ClInclude Include="..\..\Source\ArtAdventure\Game\MyGameMode.h">
+      <Filter>Source\ArtAdventure\Game</Filter>
+    </ClInclude>
+  </ItemGroup>
+</Project>

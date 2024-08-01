@@ -1,0 +1,8 @@
+{
+	"SourceFiles": [
+		"C:\\UnrealProjects\\ArtVentures\\ArtAdventure\\Source\\ArtAdventure\\ArtAdventure.Build.cs",
+		"C:\\UnrealProjects\\ArtVentures\\ArtAdventure\\Source\\ArtAdventure.Target.cs",
+		"C:\\UnrealProjects\\ArtVentures\\ArtAdventure\\Source\\ArtAdventureEditor.Target.cs"
+	],
+	"EngineVersion": "5.3.2"
+}
