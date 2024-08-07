@@ -10,7 +10,7 @@
  * 
  */
 UCLASS()
-class ARTADVENTURE_API AMyGameMode : public AGameModeBase
+class ARTVENTURE_API AMyGameMode : public AGameModeBase
 {
 	GENERATED_BODY()
 	
