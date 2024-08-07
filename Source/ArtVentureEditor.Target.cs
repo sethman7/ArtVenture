@@ -3,13 +3,13 @@
 using UnrealBuildTool;
 using System.Collections.Generic;
 
-public class ArtAdventureEditorTarget : TargetRules
+public class ArtVentureEditorTarget : TargetRules
 {
-	public ArtAdventureEditorTarget(TargetInfo Target) : base(Target)
+	public ArtVentureEditorTarget(TargetInfo Target) : base(Target)
 	{
 		Type = TargetType.Editor;
 		DefaultBuildSettings = BuildSettingsVersion.V4;
 
-		ExtraModuleNames.AddRange( new string[] { "ArtAdventure" } );
+		ExtraModuleNames.AddRange( new string[] { "ArtVenture" } );
 	}
 }

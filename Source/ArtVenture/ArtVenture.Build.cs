@@ -2,15 +2,15 @@
 
 using UnrealBuildTool;
 
-public class ArtAdventure : ModuleRules
+public class ArtVenture : ModuleRules
 {
-	public ArtAdventure(ReadOnlyTargetRules Target) : base(Target)
+	public ArtVenture(ReadOnlyTargetRules Target) : base(Target)
 	{
 		PCHUsage = PCHUsageMode.UseExplicitOrSharedPCHs;
 	
 		PublicDependencyModuleNames.AddRange(new string[] { "Core", "CoreUObject", "Engine", "InputCore" });
 
-        PrivateIncludePaths.Add("ArtAdventure");
+        PrivateIncludePaths.Add("ArtVenture");
 
         PrivateDependencyModuleNames.AddRange(new string[] {  });
 
