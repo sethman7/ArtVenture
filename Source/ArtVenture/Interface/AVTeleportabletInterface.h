@@ -25,5 +25,4 @@ public:
 	UFUNCTION(BlueprintCallable)
 	virtual void Teleport() = 0;
 
-	virtual FName GetWorldName() = 0;
 };

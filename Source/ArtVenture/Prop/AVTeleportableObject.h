@@ -6,16 +6,16 @@
 #include "GameFramework/Actor.h"
 #include "Interface/AVInteractableInterface.h"
 #include "Interface/AVTeleportabletInterface.h"
-#include "AVArtPiece.generated.h"
+#include "AVTeleportableObject.generated.h"
 
 UCLASS()
-class ARTVENTURE_API AAVArtPiece : public AActor, public IAVInteractableInterface , public IAVTeleportabletInterface
+class ARTVENTURE_API AAVTeleportableObject : public AActor, public IAVInteractableInterface , public IAVTeleportabletInterface
 {
 	GENERATED_BODY()
 	
 public:	
 	// Sets default values for this actor's properties
-	AAVArtPiece();
+	AAVTeleportableObject();
 
 protected:
 	// Called when the game starts or when spawned
@@ -32,5 +32,4 @@ public:
 	
 	UFUNCTION()
 	virtual void Teleport() override;
-	virtual FName GetWorldName() override;
 };
