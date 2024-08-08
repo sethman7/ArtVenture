@@ -11,9 +11,9 @@ AAVGameMode::AAVGameMode()
 		DefaultPawnClass = DefaultPawnClassRef.Class;
 	}
 
-	static ConstructorHelpers::FClassFinder<APlayerController> PlayerControllerClassRef(TEXT("/Game/ArtVenture/TempPlayer/Blueprints/BP_FirstPersonPlayerController.BP_FirstPersonPlayerController"));
-	if (PlayerControllerClassRef.Class)
-	{
-		PlayerControllerClass = PlayerControllerClassRef.Class;
-	}
+	//static ConstructorHelpers::FObjectFinder<APlayerController> PlayerControllerClassRef(TEXT("/Game/ArtVenture/TempPlayer/Blueprints/BP_FirstPersonPlayerController.BP_FirstPersonPlayerController"));
+	//if (PlayerControllerClassRef.Object)
+	//{
+	//	PlayerControllerClass. = PlayerControllerClassRef.Object;
+	//}
 }
