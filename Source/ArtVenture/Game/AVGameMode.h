@@ -15,4 +15,5 @@ class ARTVENTURE_API AAVGameMode : public AGameModeBase
 	GENERATED_BODY()
 public:
 	AAVGameMode();
+
 };
