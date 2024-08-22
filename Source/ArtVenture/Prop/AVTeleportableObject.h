@@ -32,4 +32,5 @@ public:
 	
 	UFUNCTION()
 	virtual void Teleport() override;
+	virtual void Interact() override;
 };
