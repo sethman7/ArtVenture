@@ -33,4 +33,9 @@ void AAVTeleportableObject::Teleport()
 	UGameplayStatics::OpenLevel(GetWorld(),WorldName);
 }
 
+void AAVTeleportableObject::Interact()
+{
+	Teleport();
+}
+
 
