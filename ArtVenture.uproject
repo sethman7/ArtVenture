@@ -44,7 +44,7 @@
 		},
 		{
 			"Name": "HttpGPT",
-			"Enabled": true,
+			"Enabled": false,
 			"MarketplaceURL": "com.epicgames.launcher://ue/marketplace/product/433c180835184aeca0172680a69497ee"
 		},
 		{
