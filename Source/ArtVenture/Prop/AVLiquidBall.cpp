@@ -55,9 +55,13 @@ void AAVLiquidBall::Interact()
 void AAVLiquidBall::NotifyHit(UPrimitiveComponent* MyComp, AActor* Other, UPrimitiveComponent* OtherComp, bool bSelfMoved, FVector HitLocation, FVector HitNormal, FVector NormalImpulse, const FHitResult& Hit)
 {
 	Super::NotifyHit(MyComp, Other, OtherComp, bSelfMoved, HitLocation, HitNormal, NormalImpulse, Hit);
+	if (! ( Hit.IsValidBlockingHit() && OtherComp->GetCollisionProfileName()=="Drawable") )
+	{
+		return;
+	}
+
 	OtherComp->SetMaterial(0, OwnerMaterial);
 	GEngine->AddOnScreenDebugMessage(-1, 5.0f, FColor::Blue, TEXT("HIT"));
-	
 	//UGameplayStatics::SpawnEmitterAtLocation(GetWorld(), DestoryParticle, GetActorLocation(), GetActorRotation(), FVector(2.0f));
 	DestoryFXComponent = UNiagaraFunctionLibrary::SpawnSystemAtLocation(GetWorld(), DestoryFX, FVector(GetActorLocation()), GetActorRotation(), FVector(5.0f));
 
