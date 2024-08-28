@@ -10,7 +10,6 @@ AAVTeleportableObject::AAVTeleportableObject()
  	// Set this actor to call Tick() every frame.  You can turn this off to improve performance if you don't need it.
 	PrimaryActorTick.bCanEverTick = true;
 	Mesh = CreateDefaultSubobject<UStaticMeshComponent>(TEXT("Mesh"));
-
 	RootComponent = Mesh;
 
 }
@@ -32,6 +31,11 @@ void AAVTeleportableObject::Tick(float DeltaTime)
 void AAVTeleportableObject::Teleport()
 {
 	UGameplayStatics::OpenLevel(GetWorld(),WorldName);
+}
+
+void AAVTeleportableObject::Interact()
+{
+	Teleport();
 }
 
 
