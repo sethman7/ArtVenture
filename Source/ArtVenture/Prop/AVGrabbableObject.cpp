@@ -1,7 +1,7 @@
 ﻿// Fill out your copyright notice in the Description page of Project Settings.
 
 
-#include "Prop/AVLiquidBall.h"
+#include "Prop/AVGrabbableObject.h"
 #include "Components/SphereComponent.h"
 #include "NiagaraSystem.h"
 #include "NiagaraComponent.h"
@@ -9,7 +9,7 @@
 #include "Kismet/GameplayStatics.h"
 
 // Sets default values
-AAVLiquidBall::AAVLiquidBall()
+AAVGrabbableObject::AAVGrabbableObject()
 {
  	// Set this actor to call Tick() every frame.  You can turn this off to improve performance if you don't need it.
 	PrimaryActorTick.bCanEverTick = true;
@@ -34,7 +34,7 @@ AAVLiquidBall::AAVLiquidBall()
 }
 
 // Called when the game starts or when spawned
-void AAVLiquidBall::BeginPlay()
+void AAVGrabbableObject::BeginPlay()
 {
 	Super::BeginPlay();
 	OwnerMaterial = SphereVisual->GetMaterial(0);
@@ -42,17 +42,17 @@ void AAVLiquidBall::BeginPlay()
 }
 
 // Called every frame
-void AAVLiquidBall::Tick(float DeltaTime)
+void AAVGrabbableObject::Tick(float DeltaTime)
 {
 	Super::Tick(DeltaTime);
 }
 
-void AAVLiquidBall::Interact()
+void AAVGrabbableObject::Interact()
 {
 	//grab
 }
 
-void AAVLiquidBall::NotifyHit(UPrimitiveComponent* MyComp, AActor* Other, UPrimitiveComponent* OtherComp, bool bSelfMoved, FVector HitLocation, FVector HitNormal, FVector NormalImpulse, const FHitResult& Hit)
+void AAVGrabbableObject::NotifyHit(UPrimitiveComponent* MyComp, AActor* Other, UPrimitiveComponent* OtherComp, bool bSelfMoved, FVector HitLocation, FVector HitNormal, FVector NormalImpulse, const FHitResult& Hit)
 {
 	Super::NotifyHit(MyComp, Other, OtherComp, bSelfMoved, HitLocation, HitNormal, NormalImpulse, Hit);
 	if (! ( Hit.IsValidBlockingHit() && OtherComp->GetCollisionProfileName()=="Drawable") )
@@ -74,7 +74,7 @@ void AAVLiquidBall::NotifyHit(UPrimitiveComponent* MyComp, AActor* Other, UPrimi
 
 }
 
-void AAVLiquidBall::ChangeMaterial()
+void AAVGrabbableObject::ChangeMaterial()
 {
 
 }

@@ -5,16 +5,16 @@
 #include "CoreMinimal.h"
 #include "GameFramework/Actor.h"
 #include "Interface/AVInteractableInterface.h"
-#include "AVLiquidBall.generated.h"
+#include "AVGrabbableObject.generated.h"
 
 UCLASS()
-class ARTVENTURE_API AAVLiquidBall : public AActor, public IAVInteractableInterface
+class ARTVENTURE_API AAVGrabbableObject : public AActor, public IAVInteractableInterface
 {
 	GENERATED_BODY()
 	
 public:	
 	// Sets default values for this actor's properties
-	AAVLiquidBall();
+	AAVGrabbableObject();
 
 protected:
 	// Called when the game starts or when spawned
