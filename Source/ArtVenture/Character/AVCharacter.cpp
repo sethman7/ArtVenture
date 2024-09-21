@@ -4,8 +4,9 @@
 #include "Character/AVCharacter.h"
 
 //Camera
-#include "GameFramework/SpringArmComponent.h"
 #include "Camera/CameraComponent.h"
+#include "Camera/PlayerCameraManager.h"
+#include "Kismet/KismetMathLibrary.h"
 //Collision
 #include "Components/CapsuleComponent.h"
 //Movement
@@ -14,6 +15,8 @@
 #include "InputMappingContext.h"
 #include "EnhancedInputComponent.h"
 #include "EnhancedInputSubsystems.h"
+//Interface
+#include "Interface/AVInteractableInterface.h"
 
 // Sets default values
 AAVCharacter::AAVCharacter()
@@ -45,11 +48,9 @@ AAVCharacter::AAVCharacter()
 	GetMesh()->SetCollisionProfileName(TEXT("NoCollision"));
 
 	//Camera
-	CameraBoom = CreateDefaultSubobject<USpringArmComponent>(TEXT("CameraBoom"));
-	CameraBoom->SetupAttachment(RootComponent);
-	CameraBoom->TargetArmLength = 400.0f;
-	CameraBoom->bUsePawnControlRotation = true;
-	//Camera->SetActive(true);
+	Camera = CreateDefaultSubobject<UCameraComponent>(TEXT("Camera"));
+	Camera->SetupAttachment(RootComponent);
+	Camera->bUsePawnControlRotation = true;
 
 
 	//Get Mesh
@@ -95,12 +96,12 @@ AAVCharacter::AAVCharacter()
 	}
 	ensure(InputActionJumpRef.Object);
 
-	//static ConstructorHelpers::FObjectFinder<UInputAction> InputActionInteractRef(TEXT("/Game/ArtVenture/Blueprint/Player/IA_Interact.IA_Interact"));
-	//if (InputActionInteractRef.Object)
-	//{
-	//	InteractAction = InputActionInteractRef.Object;
-	//}
-	//ensure(InputActionInteractRef.Object);
+	static ConstructorHelpers::FObjectFinder<UInputAction> InputActionInteractRef(TEXT("/Game/ArtVenture/Blueprint/Player/IA_Interact.IA_Interact"));
+	if (InputActionInteractRef.Object)
+	{
+		InteractAction = InputActionInteractRef.Object;
+	}
+	ensure(InputActionInteractRef.Object);
 
 
 }
@@ -114,6 +115,9 @@ void AAVCharacter::BeginPlay()
 	{
 		EnableInput(PlayerController);
 	}
+
+	//Get CameraManager
+	PlayerCameraManager = GetWorld()->GetFirstPlayerController()->PlayerCameraManager;
 }
 
 void AAVCharacter::Move(const FInputActionValue& Value)
@@ -138,17 +142,29 @@ void AAVCharacter::Look(const FInputActionValue& Value)
 	AddControllerPitchInput(LookAxisVector.Y);
 }
 
-//void AAVCharacter::Interact()
-//{
-//	FHitResult OutHit;
-//	FVector Start = Camera->GetRelativeLocation();
-//	Camera->GetRelativeLocation();
-//	FVector ForwardVector = getrotation
-//	FVector End=
-//
-//
-//
-//}
+
+
+void AAVCharacter::Interact(const FInputActionValue& Value)
+{
+
+	FHitResult OutHit;
+	FCollisionQueryParams Params(SCENE_QUERY_STAT(INTERACT), false, this);
+
+	FVector Start = PlayerCameraManager->GetCameraLocation();
+	FRotator Rotation =  PlayerCameraManager->GetCameraRotation();
+	FVector ForwardVector = UKismetMathLibrary::GetForwardVector(Rotation);
+	FVector End= Start + (ForwardVector * 300.0f); 
+
+	bool IsHit = GetWorld()->LineTraceSingleByChannel(OutHit, Start, End, ECC_GameTraceChannel2, Params);
+	if (IsHit)
+	{
+		IAVInteractableInterface* InteractableObject = Cast<IAVInteractableInterface>(OutHit.GetActor());
+		if (InteractableObject !=NULL)
+		{
+			InteractableObject->Interact();
+		}
+	}
+}
 
 // Called every frame
 void AAVCharacter::Tick(float DeltaTime)
@@ -178,6 +194,6 @@ void AAVCharacter::SetupPlayerInputComponent(UInputComponent* PlayerInputCompone
 	EnhancedInputComponent->BindAction(LookAction, ETriggerEvent::Triggered, this, &AAVCharacter::Look);
 	EnhancedInputComponent->BindAction(JumpAction, ETriggerEvent::Triggered, this, &ACharacter::Jump);
 	EnhancedInputComponent->BindAction(JumpAction, ETriggerEvent::Completed, this, &ACharacter::StopJumping);
-	//EnhancedInputComponent->BindAction(InteractAction, ETriggerEvent::Triggered, this, &ACharacter::Interact);
+	EnhancedInputComponent->BindAction(InteractAction, ETriggerEvent::Triggered, this, &AAVCharacter::Interact);
 }
 
