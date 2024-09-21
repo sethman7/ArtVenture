@@ -8,9 +8,11 @@ public class ArtVenture : ModuleRules
 	{
 		PCHUsage = PCHUsageMode.UseExplicitOrSharedPCHs;
 	
-		PublicDependencyModuleNames.AddRange(new string[] { "Core", "CoreUObject", "Engine", "InputCore", "Niagara" });
+		PublicDependencyModuleNames.AddRange(new string[] { "Core", "CoreUObject", "Engine", "InputCore", "Niagara" ,"EnhancedInput", "UMG" });
 
         PrivateIncludePaths.Add("ArtVenture");
+
+        PublicIncludePaths.Add("ArtVenture");
 
         PrivateDependencyModuleNames.AddRange(new string[] {  });
 
