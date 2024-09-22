@@ -16,17 +16,15 @@ public:
 	// Sets default values for this character's properties
 	AAVCharacter();
 
-	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = Camera, Meta = (AllowPrivateAcess = "true"))
-	TObjectPtr<class UCameraComponent> Camera;
 protected:
 	// Called when the game starts or when spawned
 	virtual void BeginPlay() override;
 
 	//Camera Section
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = Camera, Meta = (AllowPrivateAcess = "true"))
-	TObjectPtr<class USpringArmComponent> CameraBoom;
+	TObjectPtr<class UCameraComponent> Camera;
 
-
+	APlayerCameraManager* PlayerCameraManager;
 
 	//Input Section
 	UPROPERTY(EditAnywhere, Category = Input, Meta = (AllowPrivateAcess = "true"))
@@ -47,7 +45,7 @@ protected:
 	//Movement Section
 	void Move(const FInputActionValue& Value);
 	void Look(const FInputActionValue& Value);
-	void Interact();
+	void Interact(const FInputActionValue& Value);
 
 public:	
 	// Called every frame
