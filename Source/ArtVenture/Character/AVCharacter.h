@@ -42,11 +42,18 @@ protected:
 	UPROPERTY(EditAnywhere, Category = Input, Meta = (AllowPrivateAcess = "true"))
 	TObjectPtr<class UInputAction> InteractAction;
 
+	UPROPERTY(EditAnywhere, Category = Input, Meta = (AllowPrivateAcess = "true"))
+	TObjectPtr<class UInputAction> DropAction;
+
+
+	AActor* GrabbaleItem;
+
 	//Movement Section
 	void Move(const FInputActionValue& Value);
 	void Look(const FInputActionValue& Value);
 	void CheckInteractableObject(const FInputActionValue& Value);
-	void AttachToPlayer(AActor* actor);
+	void Equip(class IAVInteractableInterface* InteractableObject);
+	void Drop();
 
 public:	
 	// Called every frame

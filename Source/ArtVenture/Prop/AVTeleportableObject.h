@@ -5,7 +5,6 @@
 #include "CoreMinimal.h"
 #include "GameFramework/Actor.h"
 #include "Interface/AVInteractableInterface.h"
-#include "Interface/AVTeleportabletInterface.h"
 #include "AVTeleportableObject.generated.h"
 
 UCLASS()
