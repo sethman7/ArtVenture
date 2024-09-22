@@ -103,7 +103,12 @@ AAVCharacter::AAVCharacter()
 	}
 	ensure(InputActionInteractRef.Object);
 
-
+	static ConstructorHelpers::FObjectFinder<UInputAction> InputActionDropRef(TEXT("/Game/ArtVenture/Blueprint/Player/IA_Drop.IA_Drop"));
+	if (InputActionDropRef.Object)
+	{
+		DropAction = InputActionDropRef.Object;
+	}
+	ensure(InputActionDropRef.Object);
 }
 
 // Called when the game starts or when spawned
@@ -146,36 +151,61 @@ void AAVCharacter::Look(const FInputActionValue& Value)
 
 void AAVCharacter::CheckInteractableObject(const FInputActionValue& Value)
 {
-
 	FHitResult OutHit;
 	FCollisionQueryParams Params(SCENE_QUERY_STAT(INTERACT), false, this);
+
+
 
 	FVector Start = PlayerCameraManager->GetCameraLocation();
 	FRotator Rotation =  PlayerCameraManager->GetCameraRotation();
 	FVector ForwardVector = UKismetMathLibrary::GetForwardVector(Rotation);
 	FVector End= Start + (ForwardVector * 300.0f); 
 
+
+
 	bool IsHit = GetWorld()->LineTraceSingleByChannel(OutHit, Start, End, ECC_GameTraceChannel2, Params);
 	if (IsHit)
 	{
-
 		IAVInteractableInterface* InteractableObject = Cast<IAVInteractableInterface>(OutHit.GetActor());
-		if (InteractableObject !=NULL)
-		{
-			InteractableObject->Interact();
-		}
+		if (InteractableObject == NULL) { return; }		
 
+		InteractableObject->Interact();
 		if (InteractableObject->IsGrabbale == true)
 		{
-			AttachToPlayer(OutHit.GetActor());
+			Equip(InteractableObject);
 		}
-
 	}
 }
 
-void AAVCharacter::AttachToPlayer(AActor* actor)
+void AAVCharacter::Equip(IAVInteractableInterface* InteractableObject)
 {
-	actor->AttachToComponent(GetMesh(), FAttachmentTransformRules::SnapToTargetIncludingScale,"Hand");
+	GrabbaleItem = Cast<AActor>(InteractableObject);
+	GrabbaleItem->SetActorEnableCollision(false);
+	GrabbaleItem->AttachToComponent(GetMesh(), FAttachmentTransformRules::SnapToTargetNotIncludingScale,"Hand");
+}
+
+void AAVCharacter::Drop()
+{
+	if (GrabbaleItem == NULL) { return; }
+	GrabbaleItem->SetActorEnableCollision(true);
+	GrabbaleItem->DetachFromActor(FDetachmentTransformRules::KeepWorldTransform);
+	FVector PlayerLocation = GetActorLocation();
+	FVector ForwardVector = GetActorForwardVector();
+	FVector DropLocation = PlayerLocation + (ForwardVector * 200.0f);
+
+	FVector Start = DropLocation;
+	FVector End = Start - FVector(0, 0, 100);
+	FHitResult HitResult;
+	FCollisionQueryParams CollisionParams;
+
+	if (GetWorld()->LineTraceSingleByChannel(HitResult, Start, End, ECC_Visibility, CollisionParams))
+	{
+		DropLocation.Z = HitResult.Location.Z;
+	}
+
+
+	GrabbaleItem->SetActorLocation(DropLocation);
+	GrabbaleItem = NULL;
 }
 
 // Called every frame
@@ -207,5 +237,6 @@ void AAVCharacter::SetupPlayerInputComponent(UInputComponent* PlayerInputCompone
 	EnhancedInputComponent->BindAction(JumpAction, ETriggerEvent::Triggered, this, &ACharacter::Jump);
 	EnhancedInputComponent->BindAction(JumpAction, ETriggerEvent::Completed, this, &ACharacter::StopJumping);
 	EnhancedInputComponent->BindAction(InteractAction, ETriggerEvent::Triggered, this, &AAVCharacter::CheckInteractableObject);
+	EnhancedInputComponent->BindAction(DropAction, ETriggerEvent::Triggered, this, &AAVCharacter::Drop);
 }
 
