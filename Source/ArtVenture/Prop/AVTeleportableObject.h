@@ -9,7 +9,7 @@
 #include "AVTeleportableObject.generated.h"
 
 UCLASS()
-class ARTVENTURE_API AAVTeleportableObject : public AActor, public IAVInteractableInterface , public IAVTeleportabletInterface
+class ARTVENTURE_API AAVTeleportableObject : public AActor, public IAVInteractableInterface 
 {
 	GENERATED_BODY()
 	
@@ -35,6 +35,5 @@ public:
 	FName SocketName;
 
 	UFUNCTION()
-	virtual void Teleport() override;
 	virtual void Interact() override;
 };

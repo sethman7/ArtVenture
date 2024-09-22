@@ -23,4 +23,5 @@ class ARTVENTURE_API IAVInteractableInterface
 	// Add interface functions to this class. This is the class that will be inherited to implement this interface.
 public:
 	virtual void Interact() = 0;
+	bool IsGrabbale=0;
 };

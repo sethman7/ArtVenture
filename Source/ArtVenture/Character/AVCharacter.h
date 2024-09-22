@@ -45,7 +45,8 @@ protected:
 	//Movement Section
 	void Move(const FInputActionValue& Value);
 	void Look(const FInputActionValue& Value);
-	void Interact(const FInputActionValue& Value);
+	void CheckInteractableObject(const FInputActionValue& Value);
+	void AttachToPlayer(AActor* actor);
 
 public:	
 	// Called every frame

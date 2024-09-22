@@ -144,7 +144,7 @@ void AAVCharacter::Look(const FInputActionValue& Value)
 
 
 
-void AAVCharacter::Interact(const FInputActionValue& Value)
+void AAVCharacter::CheckInteractableObject(const FInputActionValue& Value)
 {
 
 	FHitResult OutHit;
@@ -158,12 +158,24 @@ void AAVCharacter::Interact(const FInputActionValue& Value)
 	bool IsHit = GetWorld()->LineTraceSingleByChannel(OutHit, Start, End, ECC_GameTraceChannel2, Params);
 	if (IsHit)
 	{
+
 		IAVInteractableInterface* InteractableObject = Cast<IAVInteractableInterface>(OutHit.GetActor());
 		if (InteractableObject !=NULL)
 		{
 			InteractableObject->Interact();
 		}
+
+		if (InteractableObject->IsGrabbale == true)
+		{
+			AttachToPlayer(OutHit.GetActor());
+		}
+
 	}
+}
+
+void AAVCharacter::AttachToPlayer(AActor* actor)
+{
+	actor->AttachToComponent(GetMesh(), FAttachmentTransformRules::SnapToTargetIncludingScale,"Hand");
 }
 
 // Called every frame
@@ -194,6 +206,6 @@ void AAVCharacter::SetupPlayerInputComponent(UInputComponent* PlayerInputCompone
 	EnhancedInputComponent->BindAction(LookAction, ETriggerEvent::Triggered, this, &AAVCharacter::Look);
 	EnhancedInputComponent->BindAction(JumpAction, ETriggerEvent::Triggered, this, &ACharacter::Jump);
 	EnhancedInputComponent->BindAction(JumpAction, ETriggerEvent::Completed, this, &ACharacter::StopJumping);
-	EnhancedInputComponent->BindAction(InteractAction, ETriggerEvent::Triggered, this, &AAVCharacter::Interact);
+	EnhancedInputComponent->BindAction(InteractAction, ETriggerEvent::Triggered, this, &AAVCharacter::CheckInteractableObject);
 }
 

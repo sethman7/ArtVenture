@@ -28,14 +28,10 @@ void AAVTeleportableObject::Tick(float DeltaTime)
 
 }
 
-void AAVTeleportableObject::Teleport()
+void AAVTeleportableObject::Interact()
 {
 	UGameplayStatics::OpenLevel(GetWorld(),WorldName);
 }
 
-void AAVTeleportableObject::Interact()
-{
-	Teleport();
-}
 
 
