@@ -7,7 +7,7 @@
 #include "Interface/AVInteractableInterface.h"
 #include "AVTeleportableObject.generated.h"
 
-UCLASS()
+UCLASS(Abstract)
 class ARTVENTURE_API AAVTeleportableObject : public AActor, public IAVInteractableInterface 
 {
 	GENERATED_BODY()
