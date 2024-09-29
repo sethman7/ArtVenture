@@ -7,7 +7,7 @@
 #include "AVInteractableInterface.generated.h"
 
 // This class does not need to be modified.
-UINTERFACE(BlueprintType, Meta = (CannotImplementInterfaceInBlueprint))
+UINTERFACE(BlueprintType, Meta = (ImplementInterfaceInBlueprint))
 class UAVInteractableInterface : public UInterface
 {
 	GENERATED_BODY()
