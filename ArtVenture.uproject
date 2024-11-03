@@ -120,6 +120,10 @@
 		{
 			"Name": "ElectraPlayer",
 			"Enabled": true
+		},
+		{
+			"Name": "TextToSpeech",
+			"Enabled": true
 		}
 	],
 	"TargetPlatforms": [
