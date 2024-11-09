@@ -27,10 +27,12 @@ public:
 	TObjectPtr<UStaticMeshComponent> Mesh;
 
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Teleportable") // 블프로 WorldName값이 필요해서 수정햇서
-	FName WorldName;
+	FName DestinationWorldName;
 	
-	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Teleportable") // 블프로 WorldName값이 필요해서 수정햇서
-	FName SocketName;
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Teleportable")
+	FString CurrentWorldName;
+
+
 
 	UFUNCTION(BlueprintCallable)
 	virtual void Interact() override;

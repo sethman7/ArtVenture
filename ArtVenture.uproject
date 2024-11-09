@@ -124,6 +124,14 @@
 		{
 			"Name": "TextToSpeech",
 			"Enabled": true
+		},
+		{
+			"Name": "PixelStreaming",
+			"Enabled": false
+		},
+		{
+			"Name": "PixelStreamingPlayer",
+			"Enabled": false
 		}
 	],
 	"TargetPlatforms": [
