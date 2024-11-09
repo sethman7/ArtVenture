@@ -5,11 +5,10 @@
 #include "CoreMinimal.h"
 #include "GameFramework/Actor.h"
 #include "Interface/AVInteractableInterface.h"
-#include "Interface/AVTeleportabletInterface.h"
 #include "AVTeleportableObject.generated.h"
 
-UCLASS()
-class ARTVENTURE_API AAVTeleportableObject : public AActor, public IAVInteractableInterface , public IAVTeleportabletInterface
+UCLASS(Abstract)
+class ARTVENTURE_API AAVTeleportableObject : public AActor, public IAVInteractableInterface 
 {
 	GENERATED_BODY()
 	
@@ -27,14 +26,12 @@ public:
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = Mesh)
 	TObjectPtr<UStaticMeshComponent> Mesh;
 
-
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Teleportable") // 블프로 WorldName값이 필요해서 수정햇서
 	FName WorldName;
 	
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Teleportable") // 블프로 WorldName값이 필요해서 수정햇서
 	FName SocketName;
 
-	UFUNCTION()
-	virtual void Teleport() override;
+	UFUNCTION(BlueprintCallable)
 	virtual void Interact() override;
 };
