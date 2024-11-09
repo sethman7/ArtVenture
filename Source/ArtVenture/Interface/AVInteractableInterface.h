@@ -24,6 +24,5 @@ class ARTVENTURE_API IAVInteractableInterface
 public:
 
 	virtual void Interact() = 0;
-	bool IsGrabbale=0;
 };
 
