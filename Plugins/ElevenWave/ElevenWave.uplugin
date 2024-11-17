@@ -1,0 +1,28 @@
+{
+	"FileVersion": 3,
+	"Version": 1,
+	"VersionName": "1.0",
+	"FriendlyName": "ElevenWave",
+	"Description": "Eleven Labs Api Integration For UE",
+	"Category": "Voice",
+	"CreatedBy": "TareE",
+	"CreatedByURL": "https://oyintare.dev/",
+	"DocsURL": "https://docs.google.com/document/d/1HvvHl8gHR6l6zDBRPKguzHTyO09j2MadhPPCWLt07Ow/edit?usp=sharing",
+	"MarketplaceURL": "com.epicgames.launcher://ue/marketplace/product/3f270a03809c4cb184cc495a98e07862",
+	"SupportURL": "",
+	"EngineVersion": "5.3.0",
+	"CanContainContent": false,
+	"Installed": true,
+	"Modules": [
+		{
+			"Name": "ElevenWave",
+			"Type": "Runtime",
+			"LoadingPhase": "Default",
+			"PlatformAllowList": [
+				"Win64",
+				"Mac",
+				"Linux"
+			]
+		}
+	]
+}
