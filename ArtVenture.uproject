@@ -46,7 +46,7 @@
 		},
 		{
 			"Name": "HttpGPT",
-			"Enabled": false,
+			"Enabled": true,
 			"MarketplaceURL": "com.epicgames.launcher://ue/marketplace/product/433c180835184aeca0172680a69497ee"
 		},
 		{
@@ -148,6 +148,10 @@
 			"Name": "RuntimeAudioImporter",
 			"Enabled": true,
 			"MarketplaceURL": "com.epicgames.launcher://ue/marketplace/product/81fd278e318e4235a028d3fdf46bf036"
+		},
+		{
+			"Name": "SkeletalMeshModelingTools",
+			"Enabled": true
 		}
 	],
 	"TargetPlatforms": [
