@@ -152,6 +152,11 @@
 		{
 			"Name": "SkeletalMeshModelingTools",
 			"Enabled": true
+		},
+		{
+			"Name": "ElevenWave",
+			"Enabled": true,
+			"MarketplaceURL": "com.epicgames.launcher://ue/marketplace/product/3f270a03809c4cb184cc495a98e07862"
 		}
 	],
 	"TargetPlatforms": [
